@@ -1,31 +1,29 @@
 package br.com.biblioteca.models;
 
-public class Livro {
-    private String isbn;
-    private String nome;
-    private String autor;
+import java.io.Serializable;
 
-    public Livro(String isbn, String nome, String autor){
-        this.isbn = isbn;
-        this.nome = nome;
-        this.autor = autor;
+public class Livro implements Serializable {
+
+    private String isbn;
+    private String titulo;
+    private String autor;
+    private double preco;
+
+    public Livro(String isbn, String titulo, String autor, double preco) {
+        this.isbn   = isbn;
+        this.titulo = titulo;
+        this.autor  = autor;
+        this.preco  = preco;
     }
 
-    public String getIsbn() {return isbn;}
-    public void setIsbn(String isbn) {this.isbn = isbn;}
-
-    public String getNome() {return nome;}
-    public void setNome(String nome) {this.nome = nome;}
-
-    public String getAutor() {return autor;}
-    public void setAutor(String autor) {this.autor = autor;}
+    public String getIsbn()   { return isbn; }
+    public String getTitulo() { return titulo; }
+    public String getAutor()  { return autor; }
+    public double getPreco()  { return preco; }
 
     @Override
     public String toString() {
-        return "Livro{" +
-                "isbn='" + isbn + '\'' +
-                ", nome='" + nome + '\'' +
-                ", autor='" + autor + '\'' +
-                '}';
+        return String.format("Livro{isbn='%s', titulo='%s', autor='%s', preco=R$%.2f}",
+                isbn, titulo, autor, preco);
     }
 }
