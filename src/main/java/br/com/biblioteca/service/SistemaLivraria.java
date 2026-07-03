@@ -7,53 +7,52 @@ import java.io.IOException;
 import java.util.Collection;
 
 /**
- * Define as operações principais do sistema de livraria.
- *
- * <p>Permite cadastrar, pesquisar e remover livros do acervo,
- * além de persistir e recuperar os dados em arquivo.</p>
- *
- * @author seu nome
- * @version 1.0
+ * Interface que define as operações principais de um sistema de gerenciamento
+ * de livraria/biblioteca.
+ * <p>
+ * Reúne as funcionalidades de cadastro, pesquisa, remoção e persistência de
+ * livros que devem ser implementadas por qualquer classe que represente um
+ * sistema de livraria concreto (ex.: {@link Livraria}).
  */
 public interface SistemaLivraria {
 
     /**
      * Cadastra um novo livro no acervo.
      *
-     * @param isbn   identificador único do livro
+     * @param isbn   código ISBN do livro (chave única de identificação)
      * @param titulo título do livro
-     * @param autor  nome do autor
-     * @param preco  preço do livro em reais
+     * @param autor  autor do livro
+     * @param preco  preço de venda do livro
      */
-    public void cadastrarLivro(String isbn, String titulo, String autor, double preco);
+    void cadastrarLivro(String isbn, String titulo, String autor, double preco);
 
     /**
      * Pesquisa todos os livros de um determinado autor.
      *
      * @param autor nome do autor a ser pesquisado
-     * @return coleção de livros encontrados, vazia se nenhum for encontrado
+     * @return coleção de livros encontrados (pode ser vazia, nunca nula)
      */
     Collection<Livro> pesquisarPorAutor(String autor);
 
     /**
-     * Remove um livro do acervo pelo ISBN.
+     * Remove um livro do acervo a partir do seu ISBN.
      *
-     * @param isbn identificador único do livro a ser removido
-     * @throws LivroInexistenteException se o ISBN não estiver cadastrado
+     * @param isbn código ISBN do livro a ser removido
+     * @throws LivroInexistenteException se não existir livro cadastrado com o ISBN informado
      */
-    public void removerLivro(String isbn) throws LivroInexistenteException;
+    void removerLivro(String isbn) throws LivroInexistenteException;
 
     /**
-     * Salva os dados do acervo em arquivo.
+     * Persiste o acervo atual em arquivo, utilizando serialização de objetos.
      *
-     * @throws IOException se ocorrer erro ao gravar o arquivo
+     * @throws IOException se ocorrer erro durante a gravação
      */
     void salvarDados() throws IOException;
 
     /**
-     * Recupera os dados do acervo a partir do arquivo.
+     * Recupera o acervo salvo anteriormente em arquivo.
      *
-     * @throws IOException se ocorrer erro ao ler o arquivo
+     * @throws IOException se ocorrer erro durante a leitura
      */
     void recuperarDados() throws IOException;
 }

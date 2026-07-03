@@ -23,7 +23,6 @@ public class Livro implements Serializable {
 
     @Override
     public String toString() {
-        return String.format("Livro{isbn='%s', titulo='%s', autor='%s', preco=R$%.2f}",
-                isbn, titulo, autor, preco);
+        return "Livro: "+titulo+", ISBN: "+isbn+", Autor: "+autor+", Preço: R$"+preco;
     }
 }

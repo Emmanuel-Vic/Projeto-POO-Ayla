@@ -1,7 +1,8 @@
-package br.com.biblioteca.service;
+package br.com.biblioteca;
 
 import br.com.biblioteca.exceptions.LivroInexistenteException;
 import br.com.biblioteca.models.Livro;
+import br.com.biblioteca.service.Livraria;
 import org.junit.jupiter.api.*;
 
 import java.io.IOException;
